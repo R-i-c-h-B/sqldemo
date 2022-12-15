@@ -21,6 +21,9 @@ Purpose:
 To Do:
         Alternative to specify bucketize instead of increment.
 
+Refs:
+        --#1 https://www.sqlservercentral.com/blogs/tally-tables-in-t-sql
+
 Usage:
     exec timetodestination 
     exec timetodestination @timeunits = 'bad'
@@ -34,6 +37,7 @@ Usage:
         @increment = 10000000
 
 ****************************************************************/
+set nocount on
 
 declare 
     @startdatetime datetime = getutcdate(),
@@ -89,7 +93,7 @@ insert @units
         ('nanosecond', @nanosecond),
         ('ns',          @nanosecond)
 
-
+set nocount off
 begin try
     select 
         @unitmodifier = unitmodifier
@@ -105,11 +109,13 @@ begin try
     --1     select @unitmodifier
     --1     select @steps;
 
-    ;
+    ; --#1 Code borrowed.
     with tally(n) as
         (
             select top(@steps) row_number() over (order by (select null))
-                from sys.all_columns a cross join sys.all_columns b
+                from (values(0),(0),(0),(0),(0),(0),(0),(0),(0),(0)) a(n)
+                cross join (values(0),(0),(0),(0),(0),(0),(0),(0),(0),(0)) b(n)
+                cross join (values(0),(0),(0),(0),(0),(0),(0),(0),(0),(0)) c(n)
         )
             select 
                 (@from + (@increment * (n - 1))) as speed, 
@@ -122,3 +128,4 @@ end try
 begin catch
     throw
 end catch
+go
