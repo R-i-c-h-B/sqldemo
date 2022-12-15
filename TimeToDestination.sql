@@ -26,6 +26,7 @@ Refs:
 
 Usage:
     exec timetodestination 
+
     exec timetodestination @timeunits = 'bad'
     exec timetodestination @from '800'
     exec timetodestination @increment = 4
@@ -101,10 +102,10 @@ begin try
         where timeunit = @timeunits
 
     if @unitmodifier is null    
-        throw 50000, '@timeunits parameter not recognised', 15;
+        throw 50000, '@timeunits parameter not recognised', 1;
 
     if @steps <= 0
-        throw 50000, '@from or @to parameters out of range', 15;   
+        throw 50000, '@from or @to parameters out of range', 1;   
     
     --1     select @unitmodifier
     --1     select @steps;
@@ -126,6 +127,6 @@ begin try
 
 end try
 begin catch
-    throw
+    ;throw
 end catch
 go
