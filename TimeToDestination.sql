@@ -28,7 +28,7 @@ Usage:
     exec timetodestination 
 
     exec timetodestination @timeunits = 'bad'
-    exec timetodestination @from '800'
+    exec timetodestination @from = 800
     exec timetodestination @increment = 4
     exec timetodestination @to = 40000000
     
