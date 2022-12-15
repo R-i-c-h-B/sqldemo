@@ -26,14 +26,17 @@ Usage:
     exec timetodestination @from '800'
     exec timetodestination @increment = 4
     exec timetodestination @to = 40000000
-    exec timetodestination @to = 40000000, @timeunits = 'year', @increment = 10000000
+    
+    exec timetodestination 
+        @to = 40000000, 
+        @timeunits = 'year', 
+        @increment = 10000000
 
 ****************************************************************/
 
 declare 
     @startdatetime datetime = getutcdate(),
     @steps int,
-    @millis decimal(19,2)  = 3.6e+6,
     @unitmodifier float
 
 declare 
