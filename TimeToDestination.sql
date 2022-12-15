@@ -15,6 +15,8 @@ Purpose:
         for a given speed range to travel a specified distance.
         Increment between speeds to be configurable at call time
         Time units to be configurable at call time
+
+        Feel free to play.
 To Do:
         Alternative to specify bucketize instead of increment.
 
