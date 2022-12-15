@@ -9,6 +9,7 @@ create or alter procedure timetodestination
 as
 /****************************************************************
 Author: Rich Bennett 20221215
+Source: https://github.com/R-i-c-h-B/sqldemo
 
 Purpose:
         Generate an output dataset of speed against duration 
